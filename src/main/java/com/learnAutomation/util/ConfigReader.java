@@ -11,7 +11,7 @@ public class ConfigReader {
     static {
         try {
             // Specify the path to your config.properties file
-            FileInputStream fileInputStream = new FileInputStream("config.properties");
+            FileInputStream fileInputStream = new FileInputStream("src/main/resources/config.properties");
             properties = new Properties();
             properties.load(fileInputStream);
             fileInputStream.close();

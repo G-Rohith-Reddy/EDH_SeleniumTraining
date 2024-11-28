@@ -15,7 +15,7 @@ public class LoginPage extends BasePage
      *
      * @param driver WebDriver instance to interact with the login page.
      */
-    LoginPage(WebDriver driver)
+    public LoginPage(WebDriver driver)
     {
         super(driver);
     }
@@ -36,10 +36,12 @@ public class LoginPage extends BasePage
     /**
      * Logs into the application by using the credentials fetched from the configuration file.
      */
-    public void login()
+    public boolean login()
     {
         writeText(userNameField,ConfigReader.getProperty("userName"),30);
         writeText(password,ConfigReader.getProperty("password"));
         clickElement(loginButton);
+        LeftNavBarPage leftnavBar = new LeftNavBarPage(this.driver);
+        return leftnavBar.logoDisplayed();
     }
 }

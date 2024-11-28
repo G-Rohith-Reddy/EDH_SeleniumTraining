@@ -3,6 +3,7 @@ package com.learnAutomation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -103,4 +104,14 @@ public class BasePage {
     protected void clickElement(By locator) {
         findElement(locator).click();
     }
+
+    protected boolean isElementVisible(By locator)
+    {
+        return this.findElement(locator).isDisplayed();
+    }
+    protected boolean isElementVisible(By locator,int time)
+    {
+        return getWait(time).until(ExpectedConditions.presenceOfElementLocated(locator)).isDisplayed();
+    }
+
 }
